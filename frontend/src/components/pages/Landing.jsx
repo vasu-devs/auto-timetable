@@ -1,6 +1,7 @@
 import React from 'react'
 import Hero from '../ui/Hero'
 import CompanyBanner from '../ui/CompanyBanner'
+import Footer from '../ui/Footer'
 
 const Landing = () => {
   return (
