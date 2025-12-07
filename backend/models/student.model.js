@@ -1,20 +1,31 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const studentSchema = new Schema({
-  name: {
-        type: String,
-        required: true,
+const studentSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-  email: {
-        type: String,
-        required: true,
-        unique: true,
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
     hashedPassword: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
-});
-
-const Student = model('Student', studentSchema);
+    role: {
+      type: String,
+      default: "student",
+    },
+    batch: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Batch",
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+const Student = model("Student", studentSchema);
 module.exports = Student;
