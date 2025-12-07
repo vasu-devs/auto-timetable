@@ -3,6 +3,7 @@ const Faculty = require("../models/faculty.model");
 const Student = require("../models/student.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const generateTokens = (user) => {
   const payload = { id: user._id, role: user.role, email: user.email };

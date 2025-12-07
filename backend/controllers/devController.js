@@ -1,5 +1,6 @@
 const Admin = require("../models/admin.model");
 const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 exports.createFirstAdmin = async (req, res) => {
     try {
