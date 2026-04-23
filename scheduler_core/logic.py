@@ -169,7 +169,7 @@ def solve_timetable(data):
                         group_usage[(g_id, d, active_slot)].append(var)
 
         if valid_slots_count == 0:
-            print(f"❌ IMPOSSIBLE EVENT: Event {e_id} (Group {g_id}, Teacher {t_id}) has 0 valid slots available!")
+            print(f"[ERROR] IMPOSSIBLE EVENT: Event {e_id} (Group {g_id}, Teacher {t_id}) has 0 valid slots available!")
             print("   Check: Room Capacity vs Group Size, or Teacher Unavailability blocks.")
             return None
 
@@ -216,7 +216,7 @@ def solve_timetable(data):
     status = solver.Solve(model)
 
     if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
-        print(f"✅ Solution Found: {solver.StatusName(status)}")
+        print(f"[SUCCESS] Solution Found: {solver.StatusName(status)}")
         
         schedule = []
         for (e_id, r_idx, d, s), var in shifts.items():
@@ -249,6 +249,6 @@ def solve_timetable(data):
         return schedule
     
     else:
-        print("❌ No Solution Found.")
+        print("[FAILED] No Solution Found.")
         print("The constraints are mathematically impossible to satisfy together.")
         return None

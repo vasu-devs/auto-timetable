@@ -10,6 +10,12 @@ const adminRoutes = require("./routes/adminRoutes");
 const timetableRoutes = require("./routes/timetableRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
+// Request logger middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 app.use(express.json()); // To parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // To parse URL-encoded bodies
 app.use(cookieParser()); // To parse cookies
